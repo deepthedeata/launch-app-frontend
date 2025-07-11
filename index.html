@@ -42,22 +42,157 @@
       color: #0077FF;
     }
     .hover-line i { margin-right: 10px; color: #0077FF; }
+
+    @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav img {
+    margin-bottom: 10px;
+  }
+}
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255);
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid #0000FF;
+}
+
+.logo {
+  height: 45px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+}
+
+.nav-links li a {
+  font-weight: bold;
+  font-size: 17px;
+  text-decoration: none;
+  color: #0047AB;
+  padding: 8px 14px;
+  border-radius: 6px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #FFD700;
+  bottom: 0;
+  left: 0;
+  transition: 0.4s ease;
+}
+
+.nav-links li a:hover {
+  background-color: #f0f6ff;
+  color: #000;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #0047AB;
+}
+
+/* 🔄 Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+.hover-line {
+  padding: 14px 20px;
+  font-size: 18px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.hover-line:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 12px #FFD700;
+  background-color: #ffffff;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+
   </style>
 </head>
 
 <body>
   <!-- Navigation -->
   <header>
-    <nav>
-      <img src="images/apit-logo-1.png" alt="APIT Logo" style="height: 50px;"/>
-      <ul>
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#why-attend" class="nav-link">Experience Highlights</a></li>
-        <li><a href="#Meet Us" class="nav-link">Venue</a></li>
-        <li><a href="#register" class="nav-link">Get Pass</a></li>
-        <li><a href="#contact" class="nav-link">Reach Out</a></li>
-      </ul>
-    </nav>
+    <nav class="navbar">
+    <img src="images/apit-logo-1.png" alt="APIT Logo" class="logo" />
+    <div class="nav-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#why-attend">Experience Highlights</a></li>
+      <li><a href="#Meet Us">Venue</a></li>
+      <li><a href="#register">Get Pass</a></li>
+      <li><a href="#contact">Reach Out</a></li>
+    </ul>
+  </nav>
   </header>
 
   <!-- Page 1: Home -->
@@ -129,8 +264,8 @@
 
 
   <!-- Page 2: Why Attend -->
-  <section id="why-attend" style="background-color: #f9f9f9; padding: 40px 20px 80px; text-align: center;">
-    <h2 style="font-size: 36px; color: #4934eb; margin-bottom: 50px;">Why You Should Attend</h2>
+  <section id="why-attend" style="background-color: #FFFFFF; padding: 40px 20px 80px; text-align: center;">
+    <h2 style="font-size: 36px; color: #075369; margin-bottom: 50px;">Why You Should Attend</h2>
     <div style="max-width: 800px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
       <div class="hover-line"><i class="fas fa-bolt"></i> The Rise of Responsive Milling</div>
       <div class="hover-line"><i class="fas fa-network-wired"></i> From Manual to Magical </div>
@@ -297,6 +432,27 @@
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+@media (max-width: 768px) {
+  .circle-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .typing-heading {
+    font-size: 18px;
+  }
+
+  .registration-card {
+    padding: 25px;
+  }
+
+  .registration-form input {
+    font-size: 14px;
+  }
+}
+
 </style>
 
 <script>
