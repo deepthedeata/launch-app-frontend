@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('registration-form');
   const passMessage = document.getElementById('pass-message');
@@ -11,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/register', {
+      const response = await fetch('https://launch-app-backend.onrender.com/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
