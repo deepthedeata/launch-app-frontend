@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    console.log("📤 Submitting data:", data);
 
     try {
       const response = await fetch('https://launch-app-backend.onrender.com/register', {
@@ -22,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const result = await response.json();
 
-      // Show message and reset form
+      if (!response.ok) {
+        throw new Error(result.message || 'Server error occurred');
+      }
+
       passMessage.innerText = result.message || '✅ Pass has been sent!';
       form.reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
-      passMessage.innerText = '❌ Failed to submit. Please try again.';
+      console.error('❌ Error submitting form:', error);
+      passMessage.innerText = `❌ ${error.message}`;
     } finally {
       // Re-enable button
       submitButton.disabled = false;
